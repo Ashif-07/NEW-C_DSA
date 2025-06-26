@@ -59,6 +59,9 @@ int main()
     {
         printf("\n Press 1 : Push \n Press 2 : Pop \n Press 3 : Peek \n Press 4 : Exit \n\n Enter your Choice : \t");
         scanf("%d", &choice);
+        if(choice>4||choice<0){
+            printf("Invalid Choice \nPlease Enter valid Choice. ");
+        }
         switch (choice)
         {
         case 1:
@@ -70,8 +73,7 @@ int main()
         case 3:
             peek();
             break;
-        default:
-            printf("Invalid Choice \nPlease Enter valid Choice. ");
+        
         }
     } while (choice != 4);
 
