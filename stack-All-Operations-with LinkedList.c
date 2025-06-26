@@ -47,7 +47,39 @@ void peek()
     else
         printf("peeked %d ", top->data);
 }
+void index()
+{
+    if (top == NULL)
+        printf("Stack Is Empty !");
+    else
+    {
+        int n;
+        printf("enter the index");
+        scanf("%d", &n);
+        struct Stack *temp = top;
+        for (int i = 0; i < n && temp != NULL; ++i)
+        {
+            temp = temp->next;
+        }
+        if (temp != NULL)
+            printf("value = %d ", temp->data);
+        else
+            printf("give valid index");
+    }
+}
 
+void stackBottom()
+{
+    struct Stack *temp = top;
+    while (temp->next != NULL)
+        temp = temp->next;
+    printf("\n Stack Bottom is '%d' ", temp->data);
+}
+
+void stackTop()
+{
+    printf("Stack Top = %d ", top->data);
+}
 int main()
 {
 
@@ -57,9 +89,10 @@ int main()
     printf("\n-_-_-_-_-_-_-_- Stack -_-_-_-_-_-_-_-\n");
     do
     {
-        printf("\n Press 1 : Push \n Press 2 : Pop \n Press 3 : Peek \n Press 4 : Exit \n\n Enter your Choice : \t");
+        printf("\n Press 1 : Push \n Press 2 : Pop \n Press 3 : Peek \n Press 4 : Search By Index\n Press 5: Stack Bottom \n Press 6: Stack Top\n Press 7: For Exit\n\n Enter your Choice : \t");
         scanf("%d", &choice);
-        if(choice>4||choice<0){
+        if (choice > 7 || choice < 0)
+        {
             printf("Invalid Choice \nPlease Enter valid Choice. ");
         }
         switch (choice)
@@ -73,9 +106,17 @@ int main()
         case 3:
             peek();
             break;
-        
+        case 4:
+            index();
+            break;
+        case 5:
+            stackBottom();
+            break;
+        case 6:
+            stackTop();
+            break;
         }
-    } while (choice != 4);
+    } while (choice != 7);
 
     return 0;
 }
